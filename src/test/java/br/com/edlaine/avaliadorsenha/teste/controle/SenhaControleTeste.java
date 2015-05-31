@@ -1,4 +1,4 @@
-package estudo;
+package br.com.edlaine.avaliadorsenha.teste.controle;
 
 import br.com.edlaine.avaliadorsenha.controle.SenhaControle;
 import junit.framework.TestCase;
