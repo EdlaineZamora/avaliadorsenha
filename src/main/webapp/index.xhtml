@@ -1,0 +1,36 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    template="/WEB-INF/layouts/standard.xhtml">  
+<ui:define name="content">    
+    <h:head>
+        <title>Avaliador de Seguranca de Senhas!</title>
+    </h:head>
+    <h:body>
+     <div class="panel panel-success" >
+	  	<div class="panel-heading">
+	  		<h3 class="panel-title"><span>AVALIADOR DE SEGURANCA DE SENHA</span></h3>
+	  	</div> 
+	  	<div class="panel-body">
+	  	    <p:inputText id="senha" value="#{senhaControle.senha}" onchange="submit()">
+	  	    	<f:ajax listener="#{senhaControle.avaliar}" render="senhaResultado" />
+	  	    </p:inputText>
+	  	    <div>
+		  	    <p>
+			  	    <span class="badge">42%</span>			  	    
+				    <span class="label label-warning">Warning</span>
+	    			<button type="button" class="btn btn-primary">Avaliar</button>
+	    			<h:outputText id="senhaResultado" value="#{senhaControle.resultado}"></h:outputText>
+	  	    	</p>
+	  		</div>	  		
+	  	</div> 	   
+	  	
+	  </div>
+       
+       
+    </h:body>
+    </ui:define>
+</ui:composition>
