@@ -24,6 +24,7 @@
 	  	    <div>
 		  	    <p> 
 		  	        <h:outputLabel class="label label-default" value="#{senhaControle.percentual}"></h:outputLabel>
+		  	        <p:spacer width="6"/>
 		  	        <h:panelGroup rendered="#{senhaControle.complexidadeMuitoCurta()}">
 		  	        	<h:outputLabel class="label label-danger" value="#{senhaControle.complexidade}"></h:outputLabel>
 		  	        </h:panelGroup>
@@ -42,7 +43,6 @@
 					<h:panelGroup rendered="#{senhaControle.complexidadeMuitoForte()}">
 		  	        	<h:outputLabel class="label label-primary" value="#{senhaControle.complexidade}"></h:outputLabel>
 					</h:panelGroup>		  	        			  	        		    			
-	    			<h:outputText id="senhaResultado" value="#{senhaControle.resultado}"></h:outputText>	    			
 	  	    	</p>
 	  		</div>	  		
 	  	</div>
