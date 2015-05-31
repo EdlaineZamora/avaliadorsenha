@@ -5,9 +5,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.faces.component.UIInput;
-import javax.faces.event.AjaxBehaviorEvent;
-
 import org.springframework.stereotype.Component;
 
 import br.com.edlaine.avaliadorsenha.utils.Complexidade;
