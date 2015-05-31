@@ -45,12 +45,50 @@ public class SenhaControleTeste extends TestCase {
 	public void testNumeros() {
 		
 		assertEquals("2", String.valueOf(SenhaControle.numeros("*****12")));
-		assertEquals("0", String.valueOf(SenhaControle.numeros("AaAAAaAddeqAQQ")));
+		assertEquals("0", String.valueOf(SenhaControle.numeros(" ")));
 		assertEquals("5", String.valueOf(SenhaControle.numeros("12332")));
 		assertEquals("0", String.valueOf(SenhaControle.numeros("DEDFD")));
 		assertEquals("0", String.valueOf(SenhaControle.numeros("")));
 		assertEquals("7", String.valueOf(SenhaControle.numeros("DsDs1ss2DD44555CCDA")));
 		assertEquals("2", String.valueOf(SenhaControle.numeros("D22E***ddd")));
+		
+	}
+	
+	public void testSimbolos() {
+		
+		assertEquals("5", String.valueOf(SenhaControle.simbolos("*****12")));
+		assertEquals("9", String.valueOf(SenhaControle.simbolos("()(!@##@dws]")));
+		assertEquals("0", String.valueOf(SenhaControle.simbolos("12332")));
+		assertEquals("0", String.valueOf(SenhaControle.simbolos("DEDFD")));
+		assertEquals("0", String.valueOf(SenhaControle.simbolos("")));
+		assertEquals("0", String.valueOf(SenhaControle.simbolos(" ")));
+		assertEquals("3", String.valueOf(SenhaControle.simbolos("D22E***ddd")));
+		
+	}
+	
+	
+	public void testNumerosSimbolosNoMeio() {
+		
+		assertEquals("5", String.valueOf(SenhaControle.numerosSimbolosNoMeio("*****12")));
+		assertEquals("8", String.valueOf(SenhaControle.numerosSimbolosNoMeio("()(!@##@dws2EE]")));
+		assertEquals("7", String.valueOf(SenhaControle.numerosSimbolosNoMeio("d9*98212e")));
+		assertEquals("0", String.valueOf(SenhaControle.numerosSimbolosNoMeio("DEDFD")));
+		assertEquals("0", String.valueOf(SenhaControle.numerosSimbolosNoMeio("")));
+		assertEquals("0", String.valueOf(SenhaControle.numerosSimbolosNoMeio(" ")));
+		assertEquals("5", String.valueOf(SenhaControle.numerosSimbolosNoMeio("D22E***ddd")));
+		
+	}
+	
+	
+	public void testRequerimentos() {
+		
+		assertEquals("0", String.valueOf(SenhaControle.requerimentos("*****12")));
+		assertEquals("5", String.valueOf(SenhaControle.requerimentos("()(!@##@dws2EE]")));
+		assertEquals("4", String.valueOf(SenhaControle.requerimentos("d9*98212e")));
+		assertEquals("0", String.valueOf(SenhaControle.requerimentos("DEDFD")));
+		assertEquals("0", String.valueOf(SenhaControle.requerimentos("")));
+		assertEquals("0", String.valueOf(SenhaControle.requerimentos(" ")));
+		assertEquals("5", String.valueOf(SenhaControle.requerimentos("D22E***ddd")));
 		
 	}
 	
@@ -120,5 +158,53 @@ public class SenhaControleTeste extends TestCase {
 		assertEquals("1", String.valueOf(SenhaControle.numerosConsecutivos("D22E***ddd")));
 		
 	}
+	
+	public void testLetrasSequenciais() {
+		
+		assertEquals("0", String.valueOf(SenhaControle.letrasSequenciais("")));
+		assertEquals("1", String.valueOf(SenhaControle.letrasSequenciais("DsDs1ss2DD44555CCDEA")));
+		assertEquals("0", String.valueOf(SenhaControle.letrasSequenciais("D22E***ddd")));
+		assertEquals("3", String.valueOf(SenhaControle.letrasSequenciais("DsDs1ss2DD44555CCDEfg")));
+		assertEquals("0", String.valueOf(SenhaControle.letrasSequenciais(" ")));
+		assertEquals("2", String.valueOf(SenhaControle.letrasSequenciais("abdeghij")));
+		assertEquals("1", String.valueOf(SenhaControle.letrasSequenciais("*((*sdnnnmopq")));
+		
+	}
+	
+	public void testNumerosSequenciais() {
+		
+		assertEquals("0", String.valueOf(SenhaControle.numerosSequenciais("")));
+		assertEquals("0", String.valueOf(SenhaControle.numerosSequenciais("DsDs1ss2DD44555CCDEA")));
+		assertEquals("2", String.valueOf(SenhaControle.numerosSequenciais("D23452E***ddd")));
+		assertEquals("1", String.valueOf(SenhaControle.numerosSequenciais("DsDs1ss2DD445655CCDEfg")));
+		assertEquals("0", String.valueOf(SenhaControle.numerosSequenciais(" ")));
+		assertEquals("0", String.valueOf(SenhaControle.numerosSequenciais("abdeghij")));
+		assertEquals("0", String.valueOf(SenhaControle.numerosSequenciais("*((*sdnnnmopq")));
+		
+	}
+	
+	public void testSimbolosSequenciais() {
+		
+		assertEquals("0", String.valueOf(SenhaControle.simbolosSequenciais("")));
+		assertEquals("0", String.valueOf(SenhaControle.simbolosSequenciais("DsDs1ss2DD44555CCDEA")));
+		assertEquals("2", String.valueOf(SenhaControle.simbolosSequenciais("D23452E**^&*()ddd")));
+		assertEquals("0", String.valueOf(SenhaControle.simbolosSequenciais("DsDs1ss2DD445655CCDEfg")));
+		assertEquals("0", String.valueOf(SenhaControle.simbolosSequenciais(" ")));
+		assertEquals("7", String.valueOf(SenhaControle.simbolosSequenciais("!@#$%^&*()")));
+		assertEquals("0", String.valueOf(SenhaControle.simbolosSequenciais("*((*sdnnnmopq")));
+		
+	}
+	
+	/*public void testAvaliar() {
+		
+		assertEquals("20", String.valueOf(SenhaControle.avaliar("*%")));
+		assertEquals("10", String.valueOf(SenhaControle.avaliar("*")));
+		assertEquals("30", String.valueOf(SenhaControle.avaliar("*%9")));
+        assertEquals("100", String.valueOf(SenhaControle.avaliar("DsDs1ss2DD44555CCDEA")));
+		assertEquals("100", String.valueOf(SenhaControle.avaliar("DsDs1ss2DD445655CCDEfg")));
+		assertEquals("4", String.valueOf(SenhaControle.avaliar(" ")));
+		assertEquals("39", String.valueOf(SenhaControle.avaliar("(*sdnmopq")));
+		
+	}*/
 
 }
