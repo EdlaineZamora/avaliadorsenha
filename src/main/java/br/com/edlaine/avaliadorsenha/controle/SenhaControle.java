@@ -10,15 +10,20 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 import org.springframework.stereotype.Component;
 
+import br.com.edlaine.avaliadorsenha.utils.Complexidade;
+
 @Component("senhaControle")
 public class SenhaControle  {
 	
 
-	private String senha = "ABC";
+	private String senha = "";
 	private String resultado;
+	private String percentual = "0%";
+	private Complexidade complexidade = Complexidade.MUITOFRACA;
 	
 	
-	public void avaliar(String senha) {
+	/**/
+	public void avaliar(/*String senha*/) {
 		
 		//Adicoes
 		Integer numberOfCharacters = quantidade(senha);
@@ -71,6 +76,8 @@ public class SenhaControle  {
 	
 	public void gerarResultado(Integer resultado) {
 		this.resultado = String.valueOf(resultado);
+		complexidade = Complexidade.FORTE;
+		percentual = "10%";
 		System.out.println("Resultado: " + resultado);
 	}
 	
@@ -188,6 +195,48 @@ public class SenhaControle  {
 	public static boolean simbolosSequenciais(String senha) {
 		return false;
 	}	
+	
+	public boolean complexidadeMuitoCurta() {
+		if (complexidade == Complexidade.MUITOCURTA) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean complexidadeMuitoFraca() {
+		if (complexidade == Complexidade.MUITOFRACA) {
+			return true;
+		}
+		return false;
+	}	
+	
+	public boolean complexidadeFraca() {
+		if (complexidade == Complexidade.FRACA) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean complexidadeBoa() {
+		if (complexidade == Complexidade.BOA) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean complexidadeForte() {
+		if (complexidade == Complexidade.FORTE) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean complexidadeMuitoForte() {
+		if (complexidade == Complexidade.MUITOFORTE) {
+			return true;
+		}
+		return false;
+	}
 
 	public String getSenha() {
 		return senha;
@@ -200,6 +249,16 @@ public class SenhaControle  {
 	public String getResultado() {
 		return resultado;
 	}
+
+	public String getPercentual() {
+		return percentual;
+	}
+
+	public Complexidade getComplexidade() {
+		return complexidade;
+	}
+	
+	
 
 
 }
