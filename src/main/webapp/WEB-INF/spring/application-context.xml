@@ -15,7 +15,7 @@
 
 	<!-- Informa o pacote onde o Spring ira buscar as classes anotadas (@Controller, @Service...)  -->
 	<context:component-scan base-package="br.com.edlaine.avaliadorsenha.servico.implementacao, 
-	    								  br.com.edlaine.avaliadorsenha.controle" />
+	    								  br.com.edlaine.avaliadorsenha.controller" />
     
     <context:annotation-config/>    
 	<!-- Diz ao Spring que ele deve usar a configuração das annotations -->
