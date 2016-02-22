@@ -14,7 +14,8 @@
 		http://www.springframework.org/schema/faces http://www.springframework.org/schema/faces/spring-faces-2.4.xsd">
 
 	<!-- Informa o pacote onde o Spring ira buscar as classes anotadas (@Controller, @Service...)  -->
-	<context:component-scan base-package="br.com.edlaine.avaliadorsenha.servico.implementacao, 
+	<context:component-scan base-package="br.com.edlaine.avaliadorsenha.service,
+										  br.com.edlaine.avaliadorsenha.service.impl,
 	    								  br.com.edlaine.avaliadorsenha.controller" />
     
     <context:annotation-config/>    
