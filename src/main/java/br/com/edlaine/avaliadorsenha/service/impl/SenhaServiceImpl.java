@@ -34,21 +34,20 @@ public class SenhaServiceImpl implements SenhaService {
         } else if (resultado > 80) {
             complexidade = Complexidade.MUITOFORTE;
         }
-
         return complexidade;
     }
 
-    public Integer quantidadeDeCaracteres(String senha) {
+    public Integer getQuantidadeDeCaracteres(String senha) {
         return senha.length();
     }
 
     public Integer quantidadeLetrasMaiusculas(String senha) {
-        return quantidadeDeCaracteres(senha, EXPRESSAO_REGULAR_LETRAS_MAIUSCULAS);
+        return getQuantidadeDeCaracteres(senha, EXPRESSAO_REGULAR_LETRAS_MAIUSCULAS);
     }
 
-    public Integer quantidadeDeCaracteres(String senha, String expressaoRegular) {
+    public Integer getQuantidadeDeCaracteres(String senha, String expressaoRegular) {
         Integer contador = 0;
-        for (int i=0; i < senha.length();i++) {
+        for (int i = 0; i < senha.length(); i++) {
             if (String.valueOf(senha.charAt(i)).matches(expressaoRegular)) {
                 contador++;
             }
@@ -56,19 +55,19 @@ public class SenhaServiceImpl implements SenhaService {
         return contador;
     }
 
-    public Integer letrasMinusculas(String senha) {
-        return quantidadeDeCaracteres(senha, EXPRESSAO_REGULAR_LETRAS_MINUSCULAS);
+    public Integer getQuantidadeLetrasMinusculas(String senha) {
+        return getQuantidadeDeCaracteres(senha, EXPRESSAO_REGULAR_LETRAS_MINUSCULAS);
     }
 
-    public Integer numeros(String senha){
-        return quantidadeDeCaracteres(senha, EXPRESSAO_REGULAR_NUMEROS);
+    public Integer getQuantidadeNumeros(String senha) {
+        return getQuantidadeDeCaracteres(senha, EXPRESSAO_REGULAR_NUMEROS);
     }
 
-    public Integer simbolos(String senha){
-        return quantidadeDeCaracteres(senha, EXPRESSAO_REGULAR_SIMBOLOS);
+    public Integer getQuantidadeSimbolos(String senha) {
+        return getQuantidadeDeCaracteres(senha, EXPRESSAO_REGULAR_SIMBOLOS);
     }
 
-    public Integer numerosSimbolosNoMeio(String senha) {
+    public Integer getQuantidadeNumerosSimbolosNoMeio(String senha) {
 
         Integer contador = 0;
 
@@ -77,35 +76,35 @@ public class SenhaServiceImpl implements SenhaService {
         }
 
         String caracterInicial = String.valueOf(senha.charAt(0));
-        String caracterFinal = String.valueOf(senha.charAt(senha.length()-1));
+        String caracterFinal = String.valueOf(senha.charAt(senha.length() - 1));
 
-        contador += simbolos(senha);
-        contador += numeros(senha);
+        contador += getQuantidadeSimbolos(senha);
+        contador += getQuantidadeNumeros(senha);
 
-        if (caracterInicial.matches(EXPRESSAO_REGULAR_NUMEROS) || caracterInicial.matches(EXPRESSAO_REGULAR_SIMBOLOS)){
+        if (caracterInicial.matches(EXPRESSAO_REGULAR_NUMEROS) || caracterInicial.matches(EXPRESSAO_REGULAR_SIMBOLOS)) {
             contador -= 1;
         }
 
-        if (caracterFinal.matches(EXPRESSAO_REGULAR_NUMEROS) || caracterFinal.matches(EXPRESSAO_REGULAR_SIMBOLOS)){
+        if (caracterFinal.matches(EXPRESSAO_REGULAR_NUMEROS) || caracterFinal.matches(EXPRESSAO_REGULAR_SIMBOLOS)) {
             contador -= 1;
         }
 
         return contador;
     }
 
-    public Integer requerimentos(String senha) {
+    public Integer getQuantidadeRequerimentos(String senha) {
 
         Integer contador = 0;
         if (quantidadeLetrasMaiusculas(senha) > 0) {
             contador++;
         }
-        if (letrasMinusculas(senha) > 0) {
+        if (getQuantidadeLetrasMinusculas(senha) > 0) {
             contador++;
         }
-        if (numeros(senha) > 0) {
+        if (getQuantidadeNumeros(senha) > 0) {
             contador++;
         }
-        if (simbolos(senha) > 0) {
+        if (getQuantidadeSimbolos(senha) > 0) {
             contador++;
         }
         if (contador >= 3) {
@@ -131,18 +130,18 @@ public class SenhaServiceImpl implements SenhaService {
         Integer contador = 0;
         HashMap<String, Integer> colecao = new HashMap<String, Integer>();
 
-        for(int i=0; i<senha.length();i++) {
+        for (int i = 0; i < senha.length(); i++) {
             String chave = String.valueOf(senha.charAt(i));
             if (colecao.containsKey(chave)) {
-                colecao.put(chave, colecao.get(chave)+1);
+                colecao.put(chave, colecao.get(chave) + 1);
             } else {
                 colecao.put(chave, 1);
             }
         }
 
         Iterator<Map.Entry<String, Integer>> colecaoCaracteres = colecao.entrySet().iterator();
-        while (colecaoCaracteres.hasNext()){
-            Map.Entry<String,Integer> par = (Map.Entry<String, Integer>) colecaoCaracteres.next();
+        while (colecaoCaracteres.hasNext()) {
+            Map.Entry<String, Integer> par = (Map.Entry<String, Integer>) colecaoCaracteres.next();
             if (par.getValue() > 1) {
                 contador = contador + par.getValue();
             }
@@ -150,62 +149,66 @@ public class SenhaServiceImpl implements SenhaService {
         return contador;
     }
 
-    public Integer letrasMaiusculasConsecutivas(String senha) {
-        return consecutivos(senha, EXPRESSAO_REGULAR_LETRAS_MAIUSCULAS);
+    public Integer getQuantidadeLetrasMaiusculasConsecutivas(String senha) {
+        return getQuantidadeConsecutivos(senha, EXPRESSAO_REGULAR_LETRAS_MAIUSCULAS);
     }
 
-    public Integer letrasMinusculasConsecutivas(String senha) {
-        return consecutivos(senha, EXPRESSAO_REGULAR_LETRAS_MINUSCULAS);
+    public Integer getQuantidadeLetrasMinusculasConsecutivas(String senha) {
+        return getQuantidadeConsecutivos(senha, EXPRESSAO_REGULAR_LETRAS_MINUSCULAS);
     }
 
-    public Integer numerosConsecutivos(String senha) {
-        return consecutivos(senha, EXPRESSAO_REGULAR_NUMEROS);
+    public Integer getQuantidadeNumerosConsecutivos(String senha) {
+        return getQuantidadeConsecutivos(senha, EXPRESSAO_REGULAR_NUMEROS);
     }
 
-    public Integer letrasSequenciais(String senha) {
-        return sequenciais(senha.toUpperCase(), EXPRESSAO_REGULAR_SO_LETRAS);
+    public Integer getQuantidadeLetrasSequenciais(String senha) {
+        return getQuantidadeSequenciais(senha.toUpperCase(), EXPRESSAO_REGULAR_SO_LETRAS);
     }
 
-    public Integer numerosSequenciais(String senha) {
-        return sequenciais(senha, EXPRESSAO_REGULAR_NUMEROS);
+    public Integer getQuantidadeNumerosSequenciais(String senha) {
+        return getQuantidadeSequenciais(senha, EXPRESSAO_REGULAR_NUMEROS);
     }
 
-    public Integer sequenciais(String senha, String expressaoRegular) {
+    public Integer getQuantidadeSequenciais(String senha, String expressaoRegular) {
         Integer contador = 0;
 
-        for(int i=0; i<senha.length()-1;i++) {
-            if (i+2 < senha.length()) {
-                Integer codigoAscPrimeiraLetra = (int) senha.charAt(i);
-                Integer codigoAscSegundaLetra = (int) senha.charAt(i+1);
-                Integer codigoAscTerceiraLetra = (int) senha.charAt(i+2);
-
-                if ((codigoAscPrimeiraLetra+1 == codigoAscSegundaLetra) && (codigoAscSegundaLetra+1 == codigoAscTerceiraLetra)
-                        && (String.valueOf(senha.charAt(i)).matches(expressaoRegular))
-                        && (String.valueOf(senha.charAt(i+1)).matches(expressaoRegular))
-                        && (String.valueOf(senha.charAt(i+2)).matches(expressaoRegular))) {
-                    contador++;
-                }
+        for (int i = 0; i < senha.length() - 1; i++) {
+            if (i + 2 >= senha.length()) {
+                continue;
             }
-        }
-        return contador;
-    }
-
-
-    public Integer consecutivos(String senha, String expressaoRegular) {
-        Integer contador = 0;
-
-        for(int i=0; i<senha.length()-1;i++) {
-            String letraAtual = String.valueOf(senha.charAt(i));
-            String proximaLetra = String.valueOf(senha.charAt(i+1));
-            if (letraAtual.matches(expressaoRegular) && proximaLetra.matches(expressaoRegular)) {
+            if (isCaracterSequencial(senha, expressaoRegular, i)) {
                 contador++;
             }
         }
         return contador;
     }
 
-    public Integer simbolosSequenciais(String senha) {
-        return sequenciais(senha, EXPRESSAO_REGULAR_SIMBOLOS);
+    private boolean isCaracterSequencial(final String senha, final String expressaoRegular, final int i) {
+        Integer codigoAscPrimeiraLetra = (int) senha.charAt(i);
+        Integer codigoAscSegundaLetra = (int) senha.charAt(i + 1);
+        Integer codigoAscTerceiraLetra = (int) senha.charAt(i + 2);
+
+        return (codigoAscPrimeiraLetra + 1 == codigoAscSegundaLetra) && (codigoAscSegundaLetra + 1 == codigoAscTerceiraLetra)
+                && (String.valueOf(senha.charAt(i)).matches(expressaoRegular))
+                && (String.valueOf(senha.charAt(i + 1)).matches(expressaoRegular))
+                && (String.valueOf(senha.charAt(i + 2)).matches(expressaoRegular));
+    }
+
+
+    public Integer getQuantidadeConsecutivos(String senha, String expressaoRegular) {
+        Integer contador = 0;
+
+        for (int i = 0; i < senha.length() - 1; i++) {
+            if (String.valueOf(senha.charAt(i)).matches(expressaoRegular)
+                    && String.valueOf(senha.charAt(i + 1)).matches(expressaoRegular)) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
+    public Integer getQuantidadeSimbolosSequenciais(String senha) {
+        return getQuantidadeSequenciais(senha, EXPRESSAO_REGULAR_SIMBOLOS);
     }
 
 }

@@ -17,31 +17,31 @@
 	  	<h:form id="formulario">
 	  	<div class="panel-body">
 	  	<p>
-	  	   	<p:inputText id="senha" placeholder="Senha" type="text" value="#{senhaControle.senha}">
-		  	   	<p:ajax event="keyup" update="painelResultado" listener="#{senhaControle.avaliar()}" />
+	  	   	<p:inputText id="senha" placeholder="Senha" type="text" value="#{senhaController.senha.descricao}">
+		  	   	<p:ajax event="keyup" update="painelResultado" listener="#{senhaController.recuperarPontuacaoDeCadaRegra()}" />
 	  	    </p:inputText>
   		</p>	
 	  	    <div>
 	  	    	<h:panelGroup id="painelResultado">
 		  	    <p> 
-		  	        <h:outputLabel class="label label-default" value="#{senhaControle.percentual}"></h:outputLabel>
+		  	        <h:outputLabel class="label label-default" value="#{senhaController.percentual}"></h:outputLabel>
 		  	        <p:spacer width="6"/>
-		  	        <h:panelGroup rendered="#{senhaControle.complexidadeMuitoCurta()}">
+		  	        <h:panelGroup rendered="#{senhaController.isComplexidadeMuitoCurta()}">
 		  	        	<h:outputLabel class="label label-danger" value="Muito Curta"></h:outputLabel>
 		  	        </h:panelGroup>
-		  	        <h:panelGroup rendered="#{senhaControle.complexidadeMuitoFraca()}">
+		  	        <h:panelGroup rendered="#{senhaController.isComplexidadeMuitoFraca()}">
 		  	        	<h:outputLabel class="label label-warning" value="Muito Fraca"></h:outputLabel>
 		  	        </h:panelGroup>
-		  	        <h:panelGroup rendered="#{senhaControle.complexidadeFraca()}">
+		  	        <h:panelGroup rendered="#{senhaController.isComplexidadeFraca()}">
 		  	        	<h:outputLabel class="label label-warning" value="Fraca"></h:outputLabel>
 		  	        </h:panelGroup>
-		  	        <h:panelGroup rendered="#{senhaControle.complexidadeBoa()}">
+		  	        <h:panelGroup rendered="#{senhaController.isComplexidadeBoa()}">
 		  	        	<h:outputLabel class="label label-info" value="Boa"></h:outputLabel>
 		  	        </h:panelGroup>
-		  	        <h:panelGroup rendered="#{senhaControle.complexidadeForte()}">
+		  	        <h:panelGroup rendered="#{senhaController.isComplexidadeForte()}">
 		  	        	<h:outputLabel class="label label-primary" value="Forte"></h:outputLabel>
 					</h:panelGroup>
-					<h:panelGroup rendered="#{senhaControle.complexidadeMuitoForte()}">
+					<h:panelGroup rendered="#{senhaController.isComplexidadeMuitoForte()}">
 		  	        	<h:outputLabel class="label label-primary" value="Muito Forte"></h:outputLabel>
 					</h:panelGroup>		  	        			  	        		    			
 	  	    	</p>

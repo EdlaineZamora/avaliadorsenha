@@ -9,19 +9,19 @@ public interface SenhaService {
 
     Complexidade gerarResultado(Integer resultado);
 
-    Integer quantidadeDeCaracteres(String senha);
+    Integer getQuantidadeDeCaracteres(String senha);
 
     Integer quantidadeLetrasMaiusculas(String senha);
 
-    Integer quantidadeDeCaracteres(String senha, String expressaoRegular);
+    Integer getQuantidadeDeCaracteres(String senha, String expressaoRegular);
 
-    Integer letrasMinusculas(String senha);
+    Integer getQuantidadeLetrasMinusculas(String senha);
 
-    Integer numeros(String senha);
+    Integer getQuantidadeNumeros(String senha);
 
-    Integer simbolos(String senha);
+    Integer getQuantidadeSimbolos(String senha);
 
-    Integer numerosSimbolosNoMeio(String senha);
+    Integer getQuantidadeNumerosSimbolosNoMeio(String senha);
 
     /* Mínimo de 8 caracteres de tamanho
 	   Conter 3/4 dos itens a seguir:
@@ -30,7 +30,7 @@ public interface SenhaService {
 	   - Números
 	   - Símbolos
 	 */
-    Integer requerimentos(String senha);
+    Integer getQuantidadeRequerimentos(String senha);
 
     boolean isSoLetras(String senha);
 
@@ -43,25 +43,25 @@ public interface SenhaService {
 	 */
     Integer isCaracterRepetido(String senha);
 
-    Integer letrasMaiusculasConsecutivas(String senha);
+    Integer getQuantidadeLetrasMaiusculasConsecutivas(String senha);
 
-    Integer letrasMinusculasConsecutivas(String senha);
+    Integer getQuantidadeLetrasMinusculasConsecutivas(String senha);
 
-    Integer numerosConsecutivos(String senha);
+    Integer getQuantidadeNumerosConsecutivos(String senha);
 
-    Integer letrasSequenciais(String senha);
+    Integer getQuantidadeLetrasSequenciais(String senha);
 
-    Integer numerosSequenciais(String senha);
+    Integer getQuantidadeNumerosSequenciais(String senha);
 
-    Integer sequenciais(String senha, String expressaoRegular);
+    Integer getQuantidadeSequenciais(String senha, String expressaoRegular);
 
-    Integer consecutivos(String senha, String expressaoRegular);
+    Integer getQuantidadeConsecutivos(String senha, String expressaoRegular);
 
 
     /* Na regra de negócio passada como referência não consegui entender, pois
      * eu implementei seguindo a sequência da tabela ascii e não está
      * batendo com o site passado.
      * */
-    Integer simbolosSequenciais(String senha);
+    Integer getQuantidadeSimbolosSequenciais(String senha);
 
 }
