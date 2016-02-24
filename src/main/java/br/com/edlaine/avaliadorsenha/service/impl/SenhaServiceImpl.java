@@ -108,14 +108,12 @@ public class SenhaServiceImpl implements SenhaService {
             contador++;
         }
         if (contador >= 3) {
-            Integer quantidade = senha.length();
-            if (quantidade >= 8) {
+            if (senha.length() >= 8) {
                 contador++;
             }
             return contador;
-        } else {
-            return 0;
         }
+        return 0;
     }
 
     public boolean isSoLetras(String senha) {
@@ -126,7 +124,7 @@ public class SenhaServiceImpl implements SenhaService {
         return senha.matches(EXPRESSAO_REGULAR_NUMEROS);
     }
 
-    public Integer isCaracterRepetido(String senha) {
+    public Integer getQuantidadeCaracterRepetido(String senha) {
         Integer contador = 0;
         HashMap<String, Integer> colecao = new HashMap<String, Integer>();
 
@@ -209,6 +207,51 @@ public class SenhaServiceImpl implements SenhaService {
 
     public Integer getQuantidadeSimbolosSequenciais(String senha) {
         return getQuantidadeSequenciais(senha, EXPRESSAO_REGULAR_SIMBOLOS);
+    }
+
+    public Integer getPontuacaoPositiva(String descricaoSenha) {
+        Integer total = 0;
+
+        Integer numberOfCharacters = getQuantidadeDeCaracteres(descricaoSenha);
+        Integer uppercaseLetters = quantidadeLetrasMaiusculas(descricaoSenha);
+        Integer lowercaseLetters = getQuantidadeLetrasMinusculas(descricaoSenha);
+
+        if (uppercaseLetters > 0) {
+            total += ((numberOfCharacters - uppercaseLetters) * 2);
+        }
+        if (lowercaseLetters > 0) {
+            total += ((numberOfCharacters - lowercaseLetters) * 2);
+        }
+
+        total += numberOfCharacters * 4;
+        total += getQuantidadeNumeros(descricaoSenha) * 4;
+        total += getQuantidadeSimbolos(descricaoSenha) * 6;
+        total += getQuantidadeNumerosSimbolosNoMeio(descricaoSenha) * 2;
+        total += getQuantidadeRequerimentos(descricaoSenha) * 2;
+
+        return total;
+    }
+
+    public Integer getPontuacaoNegativa(String descricaoSenha) {
+        Integer total = 0;
+
+        if (isSoLetras(descricaoSenha)) {
+            total -= getQuantidadeDeCaracteres(descricaoSenha);
+        }
+        if (isSoNumeros(descricaoSenha)) {
+            total -= getQuantidadeDeCaracteres(descricaoSenha);
+        }
+        //Integer sequentialSymbols3 = simbolosSequenciais3(senha.getDescricao());
+
+        total -= getQuantidadeCaracterRepetido(descricaoSenha);
+        total -= getQuantidadeLetrasMaiusculasConsecutivas(descricaoSenha) * 2;
+        total -= getQuantidadeLetrasMinusculasConsecutivas(descricaoSenha) * 2;
+        total -= getQuantidadeNumerosConsecutivos(descricaoSenha) * 2;
+        total -= getQuantidadeLetrasSequenciais(descricaoSenha) * 3;
+        total -= getQuantidadeNumerosSequenciais(descricaoSenha) * 3;
+        //total -= (sequentialSymbols3*3);
+
+        return total;
     }
 
 }

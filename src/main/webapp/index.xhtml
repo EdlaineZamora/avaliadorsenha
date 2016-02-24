@@ -18,13 +18,13 @@
 	  	<div class="panel-body">
 	  	<p>
 	  	   	<p:inputText id="senha" placeholder="Senha" type="text" value="#{senhaController.senha.descricao}">
-		  	   	<p:ajax event="keyup" update="painelResultado" listener="#{senhaController.recuperarPontuacaoDeCadaRegra()}" />
+		  	   	<p:ajax event="keyup" update="painelResultado" listener="#{senhaController.calcularComplexidadeDaSenha()}" />
 	  	    </p:inputText>
   		</p>	
 	  	    <div>
 	  	    	<h:panelGroup id="painelResultado">
 		  	    <p> 
-		  	        <h:outputLabel class="label label-default" value="#{senhaController.percentual}"></h:outputLabel>
+		  	        <h:outputLabel class="label label-default" value="#{senhaController.senha.pontuacaoTotal} %"></h:outputLabel>
 		  	        <p:spacer width="6"/>
 		  	        <h:panelGroup rendered="#{senhaController.isComplexidadeMuitoCurta()}">
 		  	        	<h:outputLabel class="label label-danger" value="Muito Curta"></h:outputLabel>

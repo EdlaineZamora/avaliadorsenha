@@ -41,7 +41,7 @@ public interface SenhaService {
 	 * Estou considerando a quantidadeDeCaracteres de caracteres repetidos para somar,
 	 * porém, em alguns casos dá divergência.
 	 */
-    Integer isCaracterRepetido(String senha);
+    Integer getQuantidadeCaracterRepetido(String senha);
 
     Integer getQuantidadeLetrasMaiusculasConsecutivas(String senha);
 
@@ -64,4 +64,7 @@ public interface SenhaService {
      * */
     Integer getQuantidadeSimbolosSequenciais(String senha);
 
+    Integer getPontuacaoPositiva(String descricaoSenha);
+
+    Integer getPontuacaoNegativa(String descricaoSenha);
 }

@@ -13,98 +13,83 @@ public class SenhaServiceTeste {
 
     @Test
     public void testQuantidade() {
-
-        assertEquals("7", String.valueOf(senhaService.getQuantidadeDeCaracteres("*****12")));
-        assertEquals("14", String.valueOf(senhaService.getQuantidadeDeCaracteres("AaAAAaAddeqAQQ")));
-        assertEquals("5", String.valueOf(senhaService.getQuantidadeDeCaracteres("12332")));
-        assertEquals("5", String.valueOf(senhaService.getQuantidadeDeCaracteres("DEDFD")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeDeCaracteres("")));
-        assertEquals("19", String.valueOf(senhaService.getQuantidadeDeCaracteres("DsDs1ss2DD44555CCDA")));
-        assertEquals("10", String.valueOf(senhaService.getQuantidadeDeCaracteres("D22E***ddd")));
-
+        assertEquals(7, senhaService.getQuantidadeDeCaracteres("*****12").intValue());
+        assertEquals(14, senhaService.getQuantidadeDeCaracteres("AaAAAaAddeqAQQ").intValue());
+        assertEquals(5, senhaService.getQuantidadeDeCaracteres("12332").intValue());
+        assertEquals(5, senhaService.getQuantidadeDeCaracteres("DEDFD").intValue());
+        assertEquals(0, senhaService.getQuantidadeDeCaracteres("").intValue());
+        assertEquals(19, senhaService.getQuantidadeDeCaracteres("DsDs1ss2DD44555CCDA").intValue());
+        assertEquals(10, senhaService.getQuantidadeDeCaracteres("D22E***ddd").intValue());
     }
 
     @Test
     public void testLetrasMaiusculas() {
-
-        assertEquals("0", String.valueOf(senhaService.quantidadeLetrasMaiusculas("*****12")));
-        assertEquals("8", String.valueOf(senhaService.quantidadeLetrasMaiusculas("AaAAAaAddeqAQQ")));
-        assertEquals("0", String.valueOf(senhaService.quantidadeLetrasMaiusculas("12332")));
-        assertEquals("5", String.valueOf(senhaService.quantidadeLetrasMaiusculas("DEDFD")));
-        assertEquals("0", String.valueOf(senhaService.quantidadeLetrasMaiusculas("")));
-        assertEquals("8", String.valueOf(senhaService.quantidadeLetrasMaiusculas("DsDs1ss2DD44555CCDA")));
-        assertEquals("2", String.valueOf(senhaService.quantidadeLetrasMaiusculas("D22E***ddd")));
-
+        assertEquals(0, senhaService.quantidadeLetrasMaiusculas("*****12").intValue());
+        assertEquals(8, senhaService.quantidadeLetrasMaiusculas("AaAAAaAddeqAQQ").intValue());
+        assertEquals(0, senhaService.quantidadeLetrasMaiusculas("12332").intValue());
+        assertEquals(5, senhaService.quantidadeLetrasMaiusculas("DEDFD").intValue());
+        assertEquals(0, senhaService.quantidadeLetrasMaiusculas("").intValue());
+        assertEquals(8, senhaService.quantidadeLetrasMaiusculas("DsDs1ss2DD44555CCDA").intValue());
+        assertEquals(2, senhaService.quantidadeLetrasMaiusculas("D22E***ddd").intValue());
     }
 
     @Test
     public void testLetrasMinusculas() {
-
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasMinusculas("*****12")));
-        assertEquals("6", String.valueOf(senhaService.getQuantidadeLetrasMinusculas("AaAAAaAddeqAQQ")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasMinusculas("12332")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasMinusculas("DEDFD")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasMinusculas("")));
-        assertEquals("4", String.valueOf(senhaService.getQuantidadeLetrasMinusculas("DsDs1ss2DD44555CCDA")));
-        assertEquals("3", String.valueOf(senhaService.getQuantidadeLetrasMinusculas("D22E***ddd")));
-
+        assertEquals(0, senhaService.getQuantidadeLetrasMinusculas("*****12").intValue());
+        assertEquals(6, senhaService.getQuantidadeLetrasMinusculas("AaAAAaAddeqAQQ").intValue());
+        assertEquals(0, senhaService.getQuantidadeLetrasMinusculas("12332").intValue());
+        assertEquals(0, senhaService.getQuantidadeLetrasMinusculas("DEDFD").intValue());
+        assertEquals(0, senhaService.getQuantidadeLetrasMinusculas("").intValue());
+        assertEquals(4, senhaService.getQuantidadeLetrasMinusculas("DsDs1ss2DD44555CCDA").intValue());
+        assertEquals(3, senhaService.getQuantidadeLetrasMinusculas("D22E***ddd").intValue());
     }
 
     @Test
     public void testNumeros() {
-
-        assertEquals("2", String.valueOf(senhaService.getQuantidadeNumeros("*****12")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumeros(" ")));
-        assertEquals("5", String.valueOf(senhaService.getQuantidadeNumeros("12332")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumeros("DEDFD")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumeros("")));
-        assertEquals("7", String.valueOf(senhaService.getQuantidadeNumeros("DsDs1ss2DD44555CCDA")));
-        assertEquals("2", String.valueOf(senhaService.getQuantidadeNumeros("D22E***ddd")));
-
+        assertEquals(2, senhaService.getQuantidadeNumeros("*****12").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumeros(" ").intValue());
+        assertEquals(5, senhaService.getQuantidadeNumeros("12332").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumeros("DEDFD").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumeros("").intValue());
+        assertEquals(7, senhaService.getQuantidadeNumeros("DsDs1ss2DD44555CCDA").intValue());
+        assertEquals(2, senhaService.getQuantidadeNumeros("D22E***ddd").intValue());
     }
 
     @Test
     public void testSimbolos() {
-
-        assertEquals("5", String.valueOf(senhaService.getQuantidadeSimbolos("*****12")));
-        assertEquals("9", String.valueOf(senhaService.getQuantidadeSimbolos("()(!@##@dws]")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeSimbolos("12332")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeSimbolos("DEDFD")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeSimbolos("")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeSimbolos(" ")));
-        assertEquals("3", String.valueOf(senhaService.getQuantidadeSimbolos("D22E***ddd")));
-
+        assertEquals(5, senhaService.getQuantidadeSimbolos("*****12").intValue());
+        assertEquals(9, senhaService.getQuantidadeSimbolos("()(!@##@dws]").intValue());
+        assertEquals(0, senhaService.getQuantidadeSimbolos("12332").intValue());
+        assertEquals(0, senhaService.getQuantidadeSimbolos("DEDFD").intValue());
+        assertEquals(0, senhaService.getQuantidadeSimbolos("").intValue());
+        assertEquals(0, senhaService.getQuantidadeSimbolos(" ").intValue());
+        assertEquals(3, senhaService.getQuantidadeSimbolos("D22E***ddd").intValue());
     }
 
     @Test
     public void testNumerosSimbolosNoMeio() {
-
-        assertEquals("5", String.valueOf(senhaService.getQuantidadeNumerosSimbolosNoMeio("*****12")));
-        assertEquals("8", String.valueOf(senhaService.getQuantidadeNumerosSimbolosNoMeio("()(!@##@dws2EE]")));
-        assertEquals("7", String.valueOf(senhaService.getQuantidadeNumerosSimbolosNoMeio("d9*98212e")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumerosSimbolosNoMeio("DEDFD")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumerosSimbolosNoMeio("")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumerosSimbolosNoMeio(" ")));
-        assertEquals("5", String.valueOf(senhaService.getQuantidadeNumerosSimbolosNoMeio("D22E***ddd")));
-
+        assertEquals(5, senhaService.getQuantidadeNumerosSimbolosNoMeio("*****12").intValue());
+        assertEquals(8, senhaService.getQuantidadeNumerosSimbolosNoMeio("()(!@##@dws2EE]").intValue());
+        assertEquals(7, senhaService.getQuantidadeNumerosSimbolosNoMeio("d9*98212e").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumerosSimbolosNoMeio("DEDFD").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumerosSimbolosNoMeio("").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumerosSimbolosNoMeio(" ").intValue());
+        assertEquals(5, senhaService.getQuantidadeNumerosSimbolosNoMeio("D22E***ddd").intValue());
     }
 
     @Test
     public void testRequerimentos() {
-
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeRequerimentos("*****12")));
-        assertEquals("5", String.valueOf(senhaService.getQuantidadeRequerimentos("()(!@##@dws2EE]")));
-        assertEquals("4", String.valueOf(senhaService.getQuantidadeRequerimentos("d9*98212e")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeRequerimentos("DEDFD")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeRequerimentos("")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeRequerimentos(" ")));
-        assertEquals("5", String.valueOf(senhaService.getQuantidadeRequerimentos("D22E***ddd")));
-
+        assertEquals(0, senhaService.getQuantidadeRequerimentos("*****12").intValue());
+        assertEquals(5, senhaService.getQuantidadeRequerimentos("()(!@##@dws2EE]").intValue());
+        assertEquals(4, senhaService.getQuantidadeRequerimentos("d9*98212e").intValue());
+        assertEquals(0, senhaService.getQuantidadeRequerimentos("DEDFD").intValue());
+        assertEquals(0, senhaService.getQuantidadeRequerimentos("").intValue());
+        assertEquals(0, senhaService.getQuantidadeRequerimentos(" ").intValue());
+        assertEquals(5, senhaService.getQuantidadeRequerimentos("D22E***ddd").intValue());
     }
 
     @Test
     public void testSoNumeros() {
-
         assertTrue(senhaService.isSoNumeros("1236434412"));
         assertFalse(senhaService.isSoNumeros(""));
         assertFalse(senhaService.isSoNumeros("adqw98123"));
@@ -114,104 +99,88 @@ public class SenhaServiceTeste {
 
     @Test
     public void testSoLetras() {
-
         assertFalse(senhaService.isSoLetras("1231023"));
         assertFalse(senhaService.isSoLetras(""));
         assertTrue(senhaService.isSoLetras("AAASDQWE"));
         assertTrue(senhaService.isSoLetras("asdasdASDEA"));
         assertTrue(senhaService.isSoLetras("aasdjqhuhdas"));
-
     }
 
     @Test
     public void testCaracteresRepetidos() {
-
-        assertEquals("6", String.valueOf(senhaService.isCaracterRepetido("AABCCDEE")));
-        assertEquals("0", String.valueOf(senhaService.isCaracterRepetido("ABCDE")));
-        assertEquals("0", String.valueOf(senhaService.isCaracterRepetido("")));
-        assertEquals("2", String.valueOf(senhaService.isCaracterRepetido("ABCDEE")));
-        assertEquals("0", String.valueOf(senhaService.isCaracterRepetido("ABCDeE")));
-        assertEquals("4", String.valueOf(senhaService.isCaracterRepetido("233133")));
-        assertEquals("9", String.valueOf(senhaService.isCaracterRepetido("2222dddqhq")));
-
+        assertEquals(6, senhaService.getQuantidadeCaracterRepetido("AABCCDEE").intValue());
+        assertEquals(0, senhaService.getQuantidadeCaracterRepetido("ABCDE").intValue());
+        assertEquals(0, senhaService.getQuantidadeCaracterRepetido("").intValue());
+        assertEquals(2, senhaService.getQuantidadeCaracterRepetido("ABCDEE").intValue());
+        assertEquals(0, senhaService.getQuantidadeCaracterRepetido("ABCDeE").intValue());
+        assertEquals(4, senhaService.getQuantidadeCaracterRepetido("233133").intValue());
+        assertEquals(9, senhaService.getQuantidadeCaracterRepetido("2222dddqhq").intValue());
     }
 
     @Test
     public void testLetrasMaiusculasConsecutivas() {
-
-        assertEquals("2", String.valueOf(senhaService.getQuantidadeLetrasMaiusculasConsecutivas("AaAAAaA")));
-        assertEquals("4", String.valueOf(senhaService.getQuantidadeLetrasMaiusculasConsecutivas("AaAAAaAddeqAQQ")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasMaiusculasConsecutivas("12332")));
-        assertEquals("4", String.valueOf(senhaService.getQuantidadeLetrasMaiusculasConsecutivas("DEDFD")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasMaiusculasConsecutivas("")));
-        assertEquals("5", String.valueOf(senhaService.getQuantidadeLetrasMaiusculasConsecutivas("DsDsDsDssDDCCDA")));
-        assertEquals("1", String.valueOf(senhaService.getQuantidadeLetrasMaiusculasConsecutivas("DE***")));
-
+        assertEquals(2, senhaService.getQuantidadeLetrasMaiusculasConsecutivas("AaAAAaA").intValue());
+        assertEquals(4, senhaService.getQuantidadeLetrasMaiusculasConsecutivas("AaAAAaAddeqAQQ").intValue());
+        assertEquals(0, senhaService.getQuantidadeLetrasMaiusculasConsecutivas("12332").intValue());
+        assertEquals(4, senhaService.getQuantidadeLetrasMaiusculasConsecutivas("DEDFD").intValue());
+        assertEquals(0, senhaService.getQuantidadeLetrasMaiusculasConsecutivas("").intValue());
+        assertEquals(5, senhaService.getQuantidadeLetrasMaiusculasConsecutivas("DsDsDsDssDDCCDA").intValue());
+        assertEquals(1, senhaService.getQuantidadeLetrasMaiusculasConsecutivas("DE***").intValue());
     }
 
     @Test
     public void testLetrasMinusculasConsecutivas() {
-
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasMinusculasConsecutivas("AaAAAaA")));
-        assertEquals("3", String.valueOf(senhaService.getQuantidadeLetrasMinusculasConsecutivas("AaAAAaAddeqAQQ")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasMinusculasConsecutivas("12332")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasMinusculasConsecutivas("DEDFD")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasMinusculasConsecutivas("")));
-        assertEquals("1", String.valueOf(senhaService.getQuantidadeLetrasMinusculasConsecutivas("DsDsDsDssDDCCDA")));
-        assertEquals("2", String.valueOf(senhaService.getQuantidadeLetrasMinusculasConsecutivas("DE***ddd")));
-
+        assertEquals(0, senhaService.getQuantidadeLetrasMinusculasConsecutivas("AaAAAaA").intValue());
+        assertEquals(3, senhaService.getQuantidadeLetrasMinusculasConsecutivas("AaAAAaAddeqAQQ").intValue());
+        assertEquals(0, senhaService.getQuantidadeLetrasMinusculasConsecutivas("12332").intValue());
+        assertEquals(0, senhaService.getQuantidadeLetrasMinusculasConsecutivas("DEDFD").intValue());
+        assertEquals(0, senhaService.getQuantidadeLetrasMinusculasConsecutivas("").intValue());
+        assertEquals(1, senhaService.getQuantidadeLetrasMinusculasConsecutivas("DsDsDsDssDDCCDA").intValue());
+        assertEquals(2, senhaService.getQuantidadeLetrasMinusculasConsecutivas("DE***ddd").intValue());
     }
 
     @Test
     public void testNumerosConsecutivos() {
-
-        assertEquals("1", String.valueOf(senhaService.getQuantidadeNumerosConsecutivos("*****12")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumerosConsecutivos("AaAAAaAddeqAQQ")));
-        assertEquals("4", String.valueOf(senhaService.getQuantidadeNumerosConsecutivos("12332")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumerosConsecutivos("DEDFD")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumerosConsecutivos("")));
-        assertEquals("4", String.valueOf(senhaService.getQuantidadeNumerosConsecutivos("DsDs1ss2DD44555CCDA")));
-        assertEquals("1", String.valueOf(senhaService.getQuantidadeNumerosConsecutivos("D22E***ddd")));
-
+        assertEquals(1, senhaService.getQuantidadeNumerosConsecutivos("*****12").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumerosConsecutivos("AaAAAaAddeqAQQ").intValue());
+        assertEquals(4, senhaService.getQuantidadeNumerosConsecutivos("12332").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumerosConsecutivos("DEDFD").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumerosConsecutivos("").intValue());
+        assertEquals(4, senhaService.getQuantidadeNumerosConsecutivos("DsDs1ss2DD44555CCDA").intValue());
+        assertEquals(1, senhaService.getQuantidadeNumerosConsecutivos("D22E***ddd").intValue());
     }
 
     @Test
     public void testLetrasSequenciais() {
-
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasSequenciais("")));
-        assertEquals("1", String.valueOf(senhaService.getQuantidadeLetrasSequenciais("DsDs1ss2DD44555CCDEA")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasSequenciais("D22E***ddd")));
-        assertEquals("3", String.valueOf(senhaService.getQuantidadeLetrasSequenciais("DsDs1ss2DD44555CCDEfg")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeLetrasSequenciais(" ")));
-        assertEquals("2", String.valueOf(senhaService.getQuantidadeLetrasSequenciais("abdeghij")));
-        assertEquals("1", String.valueOf(senhaService.getQuantidadeLetrasSequenciais("*((*sdnnnmopq")));
-
+        assertEquals(0, senhaService.getQuantidadeLetrasSequenciais("").intValue());
+        assertEquals(1, senhaService.getQuantidadeLetrasSequenciais("DsDs1ss2DD44555CCDEA").intValue());
+        assertEquals(0, senhaService.getQuantidadeLetrasSequenciais("D22E***ddd").intValue());
+        assertEquals(3, senhaService.getQuantidadeLetrasSequenciais("DsDs1ss2DD44555CCDEfg").intValue());
+        assertEquals(0, senhaService.getQuantidadeLetrasSequenciais(" ").intValue());
+        assertEquals(2, senhaService.getQuantidadeLetrasSequenciais("abdeghij").intValue());
+        assertEquals(1, senhaService.getQuantidadeLetrasSequenciais("*((*sdnnnmopq").intValue());
     }
 
     @Test
     public void testNumerosSequenciais() {
-
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumerosSequenciais("")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumerosSequenciais("DsDs1ss2DD44555CCDEA")));
-        assertEquals("2", String.valueOf(senhaService.getQuantidadeNumerosSequenciais("D23452E***ddd")));
-        assertEquals("1", String.valueOf(senhaService.getQuantidadeNumerosSequenciais("DsDs1ss2DD445655CCDEfg")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumerosSequenciais(" ")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumerosSequenciais("abdeghij")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeNumerosSequenciais("*((*sdnnnmopq")));
-
+        assertEquals(0, senhaService.getQuantidadeNumerosSequenciais("").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumerosSequenciais("DsDs1ss2DD44555CCDEA").intValue());
+        assertEquals(2, senhaService.getQuantidadeNumerosSequenciais("D23452E***ddd").intValue());
+        assertEquals(1, senhaService.getQuantidadeNumerosSequenciais("DsDs1ss2DD445655CCDEfg").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumerosSequenciais(" ").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumerosSequenciais("abdeghij").intValue());
+        assertEquals(0, senhaService.getQuantidadeNumerosSequenciais("*((*sdnnnmopq").intValue());
     }
 
     @Test
     public void testSimbolosSequenciais() {
-
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeSimbolosSequenciais("")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeSimbolosSequenciais("DsDs1ss2DD44555CCDEA")));
-//		assertEquals("2", String.valueOf(senhaService.getQuantidadeSimbolosSequenciais("D23452E**^&*()ddd")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeSimbolosSequenciais("DsDs1ss2DD445655CCDEfg")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeSimbolosSequenciais(" ")));
-//		assertEquals("7", String.valueOf(senhaService.getQuantidadeSimbolosSequenciais("!@#$%^&*()")));
-        assertEquals("0", String.valueOf(senhaService.getQuantidadeSimbolosSequenciais("*((*sdnnnmopq")));
-
+        assertEquals(0, senhaService.getQuantidadeSimbolosSequenciais("").intValue());
+        assertEquals(0, senhaService.getQuantidadeSimbolosSequenciais("DsDs1ss2DD44555CCDEA").intValue());
+//		assertEquals(2, senhaService.getQuantidadeSimbolosSequenciais("D23452E**^&*()ddd").intValue());
+        assertEquals(0, senhaService.getQuantidadeSimbolosSequenciais("DsDs1ss2DD445655CCDEfg").intValue());
+        assertEquals(0, senhaService.getQuantidadeSimbolosSequenciais(" ").intValue());
+//		assertEquals(7, senhaService.getQuantidadeSimbolosSequenciais("!@#$%^&*()").intValue());
+        assertEquals(0, senhaService.getQuantidadeSimbolosSequenciais("*((*sdnnnmopq").intValue());
     }
 
 }

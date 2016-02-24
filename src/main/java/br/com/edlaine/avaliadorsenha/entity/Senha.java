@@ -9,10 +9,12 @@ public class Senha {
 
     private Complexidade complexidade;
     private String descricao;
+    private Integer pontuacaoTotal;
 
     public Senha() {
         descricao = "";
         complexidade = Complexidade.MUITOCURTA;
+        pontuacaoTotal = 0;
     }
 
     public Complexidade getComplexidade() {
@@ -29,5 +31,13 @@ public class Senha {
 
     public void setDescricao(final String descricao) {
         this.descricao = descricao;
+    }
+
+    public void setPontuacaoTotal(final Integer pontuacaoTotal) {
+        this.pontuacaoTotal = pontuacaoTotal;
+    }
+
+    public Integer getPontuacaoTotal() {
+        return pontuacaoTotal;
     }
 }

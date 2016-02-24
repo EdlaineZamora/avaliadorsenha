@@ -10,9 +10,10 @@ import org.springframework.stereotype.Component;
 public class SenhaController {
 
 
-    private Senha senha;
-    private String percentual = "0%";
+    public static final int PONTUACAO_MINIMA = 0;
+    public static final int PONTUACAO_MAXIMA = 100;
     private boolean visualizarSenha = true;
+    private Senha senha;
     private SenhaService senhaService;
 
     public SenhaController() {
@@ -20,68 +21,22 @@ public class SenhaController {
         senha = new Senha();
     }
 
-    public void recuperarPontuacaoDeCadaRegra() {
-
-        //Adições
-        Integer numberOfCharacters = senhaService.getQuantidadeDeCaracteres(senha.getDescricao());
-        Integer uppercaseLetters = senhaService.quantidadeLetrasMaiusculas(senha.getDescricao());
-        Integer lowercaseLetters = senhaService.getQuantidadeLetrasMinusculas(senha.getDescricao());
-        Integer numbers = senhaService.getQuantidadeNumeros(senha.getDescricao());
-        Integer symbols = senhaService.getQuantidadeSimbolos(senha.getDescricao());
-        Integer middleNumbersOrSymbols = senhaService.getQuantidadeNumerosSimbolosNoMeio(senha.getDescricao());
-        Integer requirements = senhaService.getQuantidadeRequerimentos(senha.getDescricao());
-
-        //Subtrações
-        Integer lettersOnly = 0;
-        if (senhaService.isSoLetras(senha.getDescricao())) {
-            lettersOnly = senhaService.getQuantidadeDeCaracteres(senha.getDescricao());
-        }
-        Integer numbersOnly = 0;
-        if (senhaService.isSoNumeros(senha.getDescricao())) {
-            numbersOnly = senhaService.getQuantidadeDeCaracteres(senha.getDescricao());
-        }
-        Integer repeatCharacters = senhaService.isCaracterRepetido(senha.getDescricao());
-        Integer consecutiveUppercaseLetters = senhaService.getQuantidadeLetrasMaiusculasConsecutivas(senha.getDescricao());
-        Integer consecutiveLowercaseLetters = senhaService.getQuantidadeLetrasMinusculasConsecutivas(senha.getDescricao());
-        Integer consecutiveNumbers = senhaService.getQuantidadeNumerosConsecutivos(senha.getDescricao());
-        Integer sequentialLetters = senhaService.getQuantidadeLetrasSequenciais(senha.getDescricao());
-        Integer sequentialNumbers = senhaService.getQuantidadeNumerosSequenciais(senha.getDescricao());
-        //Integer sequentialSymbols3 = simbolosSequenciais3(senha.getDescricao());
-
+    public void calcularComplexidadeDaSenha() {
         Integer total = 0;
-        total += (numberOfCharacters * 4);
-        if (uppercaseLetters > 0) {
-            total += ((numberOfCharacters - uppercaseLetters) * 2);
-        }
-        if (lowercaseLetters > 0) {
-            total += ((numberOfCharacters - lowercaseLetters) * 2);
-        }
-        total += (numbers * 4);
-        total += (symbols * 6);
-        total += (middleNumbersOrSymbols * 2);
-        total += (requirements * 2);
 
-        total -= lettersOnly;
-        total -= numbersOnly;
-        total -= repeatCharacters;
-        total -= (consecutiveUppercaseLetters * 2);
-        total -= (consecutiveLowercaseLetters * 2);
-        total -= (consecutiveNumbers * 2);
-        total -= (sequentialLetters * 3);
-        total -= (sequentialNumbers * 3);
-        //total -= (sequentialSymbols3*3);
+        total += senhaService.getPontuacaoPositiva(senha.getDescricao());
+        total -= senhaService.getPontuacaoNegativa(senha.getDescricao());
 
-        if (total < 0) {
-            total = 0;
+        if (total < PONTUACAO_MINIMA) {
+            total = PONTUACAO_MINIMA;
         }
 
-        if (total > 100) {
-            total = 100;
+        if (total > PONTUACAO_MAXIMA) {
+            total = PONTUACAO_MAXIMA;
         }
 
+        this.senha.setPontuacaoTotal(total);
         this.senha.setComplexidade(senhaService.gerarResultado(total));
-        this.percentual = total + "%";
-
     }
 
     public boolean isComplexidadeMuitoCurta() {
@@ -106,10 +61,6 @@ public class SenhaController {
 
     public boolean isComplexidadeMuitoForte() {
         return senha.getComplexidade() == Complexidade.MUITOFORTE;
-    }
-
-    public String getPercentual() {
-        return percentual;
     }
 
     public boolean isVisualizarSenha() {
