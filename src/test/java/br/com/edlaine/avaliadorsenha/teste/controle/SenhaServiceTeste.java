@@ -1,5 +1,6 @@
 package br.com.edlaine.avaliadorsenha.teste.controle;
 
+import br.com.edlaine.avaliadorsenha.entity.Senha;
 import br.com.edlaine.avaliadorsenha.service.SenhaService;
 import br.com.edlaine.avaliadorsenha.service.impl.SenhaServiceImpl;
 import org.junit.Test;
@@ -10,6 +11,15 @@ public class SenhaServiceTeste {
 
 
     private SenhaService senhaService = new SenhaServiceImpl();
+
+    @Test
+    public void testName() throws Exception {
+        Senha minhaSenha = new Senha();
+        minhaSenha.setDescricao("123Mudar");
+
+
+
+    }
 
     @Test
     public void testQuantidade() {

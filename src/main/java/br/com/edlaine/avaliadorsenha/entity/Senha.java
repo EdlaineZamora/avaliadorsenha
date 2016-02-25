@@ -17,6 +17,10 @@ public class Senha {
         pontuacaoTotal = 0;
     }
 
+    protected Senha(String valor, Complexidade complexidade, Integer pontuacao) {
+        this.complexidade = calculaComplexidade(valor);
+    }
+
     public Complexidade getComplexidade() {
         return complexidade;
     }
