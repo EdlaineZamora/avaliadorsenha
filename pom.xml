@@ -14,9 +14,6 @@
     <primeFaceThemesVersion>1.0.10</primeFaceThemesVersion>
     <org.springframework-version>4.1.5.RELEASE</org.springframework-version>
     <primeFaceVersion>5.1</primeFaceVersion>
-    <hibernateEntitymanagerVersion>4.3.8.Final</hibernateEntitymanagerVersion>
-    <hibernateValidatorVersion>5.1.3.Final</hibernateValidatorVersion>
-    <springframeworkWebflowVersion>2.4.1.RELEASE</springframeworkWebflowVersion>
     <CATALINA_HOME>C:\java\apache-tomcat-8.0.15</CATALINA_HOME>
   </properties>
   
@@ -68,82 +65,12 @@
       <version>${jsf-version}</version>
     </dependency>
     
-    <!-- Spring Framework and Modules-->
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-context</artifactId>
-        <version>4.1.6.RELEASE</version>
-    </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
       <version>${org.springframework-version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-tx</artifactId>
-      <version>${org.springframework-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-jpa</artifactId>
-      <version>1.7.1.RELEASE</version>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <version>${hibernateEntitymanagerVersion}</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
-      <version>1.1.0.Final</version>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>${hibernateValidatorVersion}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-search-orm</artifactId>
-      <version>5.0.0.CR2</version>
-    </dependency>
-    <!-- Spring Web Flow -->
-    <dependency>
-      <groupId>org.springframework.webflow</groupId>
-      <artifactId>spring-faces</artifactId>
-      <version>${springframeworkWebflowVersion}</version>
-    </dependency>
-    
-    <!-- Hibernate -->
-    <!-- <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>4.1.0.Final</version>
-    </dependency>
-    <dependency>
-        <groupId>org.hibernate.common</groupId>
-        <artifactId>hibernate-commons-annotations</artifactId>
-        <version>4.0.4.Final</version>
-    </dependency> -->
-    
-   <!-- PostGreSQL -->
-   <dependency>
-	 <groupId>postgresql</groupId>
-	 <artifactId>postgresql</artifactId>
-	 <version>9.1-901-1.jdbc4</version>
-   </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -160,8 +87,7 @@
       <url>http://repository.primefaces.org</url>
       <layout>default</layout>
     </repository>
-    
-  </repositories>    
+  </repositories>
     
   <build>
     <finalName>avaliadorsenha</finalName>
@@ -172,7 +98,6 @@
         <artifactId>cargo-maven2-plugin</artifactId>
         <version>1.4.13</version>
         <configuration>
-          <wait>false</wait>
           <container>
             <containerId>tomcat8x</containerId>
             <type>installed</type>
