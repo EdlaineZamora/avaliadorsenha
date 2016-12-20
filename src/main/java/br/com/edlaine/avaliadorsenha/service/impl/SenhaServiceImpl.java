@@ -139,7 +139,7 @@ public class SenhaServiceImpl implements SenhaService {
 
         Iterator<Map.Entry<String, Integer>> colecaoCaracteres = colecao.entrySet().iterator();
         while (colecaoCaracteres.hasNext()) {
-            Map.Entry<String, Integer> par = (Map.Entry<String, Integer>) colecaoCaracteres.next();
+            Map.Entry<String, Integer> par = colecaoCaracteres.next();
             if (par.getValue() > 1) {
                 contador = contador + par.getValue();
             }
@@ -241,7 +241,6 @@ public class SenhaServiceImpl implements SenhaService {
         if (isSoNumeros(descricaoSenha)) {
             total -= getQuantidadeDeCaracteres(descricaoSenha);
         }
-        //Integer sequentialSymbols3 = simbolosSequenciais3(senha.getDescricao());
 
         total -= getQuantidadeCaracterRepetido(descricaoSenha);
         total -= getQuantidadeLetrasMaiusculasConsecutivas(descricaoSenha) * 2;
@@ -249,7 +248,6 @@ public class SenhaServiceImpl implements SenhaService {
         total -= getQuantidadeNumerosConsecutivos(descricaoSenha) * 2;
         total -= getQuantidadeLetrasSequenciais(descricaoSenha) * 3;
         total -= getQuantidadeNumerosSequenciais(descricaoSenha) * 3;
-        //total -= (sequentialSymbols3*3);
 
         return total;
     }

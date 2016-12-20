@@ -16,9 +16,6 @@ public class SenhaServiceTeste {
     public void testName() throws Exception {
         Senha minhaSenha = new Senha();
         minhaSenha.setDescricao("123Mudar");
-
-
-
     }
 
     @Test
@@ -186,10 +183,8 @@ public class SenhaServiceTeste {
     public void testSimbolosSequenciais() {
         assertEquals(0, senhaService.getQuantidadeSimbolosSequenciais("").intValue());
         assertEquals(0, senhaService.getQuantidadeSimbolosSequenciais("DsDs1ss2DD44555CCDEA").intValue());
-//		assertEquals(2, senhaService.getQuantidadeSimbolosSequenciais("D23452E**^&*()ddd").intValue());
         assertEquals(0, senhaService.getQuantidadeSimbolosSequenciais("DsDs1ss2DD445655CCDEfg").intValue());
         assertEquals(0, senhaService.getQuantidadeSimbolosSequenciais(" ").intValue());
-//		assertEquals(7, senhaService.getQuantidadeSimbolosSequenciais("!@#$%^&*()").intValue());
         assertEquals(0, senhaService.getQuantidadeSimbolosSequenciais("*((*sdnnnmopq").intValue());
     }
 
